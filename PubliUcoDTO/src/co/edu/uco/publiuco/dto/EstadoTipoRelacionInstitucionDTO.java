@@ -7,7 +7,7 @@ public final class EstadoTipoRelacionInstitucionDTO {
 	private UUID idenficador;
 	private String nombre;
 	private String descripcion;
-	
+	private static final String EMPTY = "";
 	
 	
 	public EstadoTipoRelacionInstitucionDTO(UUID idenficador, String nombre, String descripcion) {
@@ -22,8 +22,8 @@ public final class EstadoTipoRelacionInstitucionDTO {
 	public EstadoTipoRelacionInstitucionDTO() {
 		super();
 		setIdenficador(idenficador);
-		setNombre("");
-		setDescripcion("");//Quitar el ""
+		setNombre(EMPTY);
+		setDescripcion(EMPTY);//Quitar el ""
 	}
 
 
@@ -39,16 +39,24 @@ public final class EstadoTipoRelacionInstitucionDTO {
 	}
 	public final EstadoTipoRelacionInstitucionDTO setNombre(final String nombre) {
 		
-		this.nombre = nombre;
+		this.nombre = isNotNull(nombre);
 		return this;
 	}
 	public final String getDescripcion() {
 		return descripcion;
 	}
 	public final EstadoTipoRelacionInstitucionDTO setDescripcion(final String descripcion) {
-		this.descripcion = descripcion;
+		this.descripcion = isNotNull(descripcion);
 		return this;
 	}
 	
+	public String isNotNull(String palabra) {
+		if(palabra.isEmpty()) {
+			return "is null or empty";
+		}else {
+			return String.format("(/{0}/ is neither null nor empty", palabra != null);
+		}
+		
+	}
 	
 }
