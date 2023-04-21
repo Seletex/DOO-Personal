@@ -27,12 +27,20 @@ public final class UtilText {
 		return resultString;
 	}
 
-	public final String getDefaultValue(final String text) {
+	public final String getDefault(final String text) {
 		return getDefault(text, EMPTY);
+	}
+	
+	public static final String getDefaultValue() {
+		return EMPTY;
 	}
 
 	public final String applyTrim(final String text) {
-		return getDefaultValue(text).trim();
+		return getDefault(text).trim();
+	}
+	
+	public final boolean matchPattern(final String textString, final String patterString) {
+		return getDefault(textString).matches(getDefault(patterString));
 	}
 
 }
