@@ -5,13 +5,13 @@ import java.util.UUID;
 import co.edu.uco.publiuco.crosscutting.utils.UtilText;
 import co.edu.uco.publiuco.crosscutting.utils.UtilUUID;
 
-public final class EstadoTipoRelacionInstitucionDTO {
-
+public class TipoRelacionInstitucionDTO {
+	
 	private UUID idenficador;
 	private String nombre;
 	private String descripcion;
 
-	public EstadoTipoRelacionInstitucionDTO(UUID idenficador, String nombre, String descripcion) {
+	public TipoRelacionInstitucionDTO(UUID idenficador, String nombre, String descripcion) {
 
 		setIdenficador(idenficador);
 		setNombre(nombre);
@@ -19,22 +19,22 @@ public final class EstadoTipoRelacionInstitucionDTO {
 
 	}
 
-	public EstadoTipoRelacionInstitucionDTO() {
+	public TipoRelacionInstitucionDTO() {
 
 		setIdenficador(UtilUUID.DEFAULT_UUID);
 		setNombre(UtilText.getDefaultValue());
 		setDescripcion(UtilText.EMPTY);// Quitar el ""
 	}
 
-	public static EstadoTipoRelacionInstitucionDTO crete() {
-		return new EstadoTipoRelacionInstitucionDTO();
+	public static TipoRelacionInstitucionDTO crete() {
+		return new TipoRelacionInstitucionDTO();
 	}
 
 	public final UUID getIdenficador() {
 		return idenficador;
 	}
 
-	public final EstadoTipoRelacionInstitucionDTO setIdenficador(final UUID idenficador) {
+	public final TipoRelacionInstitucionDTO setIdenficador(final UUID idenficador) {
 		this.idenficador = UtilUUID.getDefault(idenficador);
 		return this;
 	}
@@ -43,7 +43,7 @@ public final class EstadoTipoRelacionInstitucionDTO {
 		return nombre;
 	}
 
-	public final EstadoTipoRelacionInstitucionDTO setNombre(final String nombre) {
+	public final TipoRelacionInstitucionDTO setNombre(final String nombre) {
 
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
 		return this;
@@ -53,7 +53,7 @@ public final class EstadoTipoRelacionInstitucionDTO {
 		return descripcion;
 	}
 
-	public final EstadoTipoRelacionInstitucionDTO setDescripcion(final String descripcion) {
+	public final TipoRelacionInstitucionDTO setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
 		return this;
 	}
