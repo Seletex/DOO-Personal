@@ -8,6 +8,17 @@ import co.edu.uco.publiuco.entities.EstadoTipoRelacionInstitucionEntity;
 public class EstadoTipoRelacionInstitucionAssembler implements
 		Assembler<EstadoTipoRelacionInstitucionDomain, EstadoTipoRelacionInstitucionDTO, EstadoTipoRelacionInstitucionEntity> {
 
+	private static final Assembler<EstadoTipoRelacionInstitucionDomain,EstadoTipoRelacionInstitucionDTO,EstadoTipoRelacionInstitucionEntity>
+	INSTANCE_ASSEMBLER = new EstadoTipoRelacionInstitucionAssembler();
+	
+	private EstadoTipoRelacionInstitucionAssembler() {
+		
+	}
+	
+	public static final Assembler<EstadoTipoRelacionInstitucionDomain,EstadoTipoRelacionInstitucionDTO,EstadoTipoRelacionInstitucionEntity> getInstance(){
+		return INSTANCE_ASSEMBLER;
+	}
+	
 	@Override
 	public EstadoTipoRelacionInstitucionDTO toDTOFromDomain(EstadoTipoRelacionInstitucionDomain domain) {
 		return EstadoTipoRelacionInstitucionDTO.crete().setIdenficador(domain.getIdenficador())

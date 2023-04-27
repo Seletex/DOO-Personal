@@ -13,16 +13,9 @@ public class TipoRelacionInstitucionEntity {
 	private String descripcion;
 	private EstadoTipoRelacionInstitucionEntity estado;
 
-	public TipoRelacionInstitucionEntity(UUID idenficador, String nombre, String descripcion) {
-
-		setIdenficador(idenficador);
-		setNombre(nombre);
-		setDescripcion(descripcion);
-		
-
-	}
-
-	public TipoRelacionInstitucionEntity(UUID idenficador, String nombre, String descripcion,
+	public TipoRelacionInstitucionEntity
+	(final UUID idenficador,final String nombre,
+			final String descripcion, final
 			EstadoTipoRelacionInstitucionEntity estado) {
 
 		setIdenficador(idenficador);
@@ -32,51 +25,49 @@ public class TipoRelacionInstitucionEntity {
 
 	}
 
-	public TipoRelacionInstitucionEntity() {
+	
 
-		setIdenficador(UtilUUID.DEFAULT_UUID);
-		setNombre(UtilText.getDefaultValue());
-		setDescripcion(UtilText.EMPTY);// Quitar el ""
-	}
-
-	public static TipoRelacionInstitucionEntity crete() {
-		return new TipoRelacionInstitucionEntity();
+	public static TipoRelacionInstitucionEntity create(final UUID idenficador,final String nombre,
+			final String descripcion,
+			EstadoTipoRelacionInstitucionEntity estado) {
+		return new TipoRelacionInstitucionEntity(idenficador, nombre, descripcion, estado);
 	}
 
 	public final UUID getIdenficador() {
 		return idenficador;
 	}
 
-	public final TipoRelacionInstitucionEntity setIdenficador(final UUID idenficador) {
+	private final void setIdenficador(final UUID idenficador) {
 		this.idenficador = UtilUUID.getDefault(idenficador);
-		return this;
+	
 	}
 
 	public final String getNombre() {
 		return nombre;
 	}
 
-	public final TipoRelacionInstitucionEntity setNombre(final String nombre) {
+	private final void setNombre(final String nombre) {
 
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
-		return this;
+		
 	}
 
 	public final String getDescripcion() {
 		return descripcion;
 	}
 
-	public final TipoRelacionInstitucionEntity setDescripcion(final String descripcion) {
+	private final void setDescripcion(final String descripcion) {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
-		return this;
+		
 	}
 
-	public TipoRelacionInstitucionEntity getEstado() {
+	public EstadoTipoRelacionInstitucionEntity getEstado() {
 		return estado;
 	}
 
-	public TipoRelacionInstitucionEntity setEstado(EstadoTipoRelacionInstitucionEntity estado) {
-		this.estado = UtilObject.getDefault(estado, EstadoTipoRelacionInstitucionEntity.crete());
-		return this;
+	private void setEstado(EstadoTipoRelacionInstitucionEntity estado) {
+		this.estado = UtilObject.getDefault(estado,
+				EstadoTipoRelacionInstitucionEntity.getDefaultObject());
+		
 	}
 }

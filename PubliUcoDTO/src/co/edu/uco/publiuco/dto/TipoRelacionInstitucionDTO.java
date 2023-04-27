@@ -28,6 +28,7 @@ public class TipoRelacionInstitucionDTO {
 		setIdenficador(UtilUUID.DEFAULT_UUID);
 		setNombre(UtilText.getDefaultValue());
 		setDescripcion(UtilText.EMPTY);// Quitar el ""
+		setEstado(EstadoTipoRelacionInstitucionDTO.crete());
 	}
 
 	public static TipoRelacionInstitucionDTO crete() {
@@ -62,11 +63,11 @@ public class TipoRelacionInstitucionDTO {
 		return this;
 	}
 
-	public EstadoTipoRelacionInstitucionDTO getEstado() {
+	public final EstadoTipoRelacionInstitucionDTO getEstado() {
 		return estado;
 	}
 
-	public TipoRelacionInstitucionDTO setEstado(EstadoTipoRelacionInstitucionDTO estado) {
+	public final TipoRelacionInstitucionDTO setEstado(EstadoTipoRelacionInstitucionDTO estado) {
 		this.estado = UtilObject.getDefault(estado, EstadoTipoRelacionInstitucionDTO.crete());
 		return this;
 	}

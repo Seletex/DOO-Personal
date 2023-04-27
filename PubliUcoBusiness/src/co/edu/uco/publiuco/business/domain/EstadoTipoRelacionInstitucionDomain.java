@@ -4,31 +4,39 @@ import java.util.UUID;
 
 import co.edu.uco.publiuco.crosscutting.utils.UtilText;
 import co.edu.uco.publiuco.crosscutting.utils.UtilUUID;
-
-
-
+import co.edu.uco.publiuco.entities.EstadoTipoRelacionInstitucionEntity;
 
 public final class EstadoTipoRelacionInstitucionDomain {
-
+	private static final EstadoTipoRelacionInstitucionDomain DEFAULT_OBJECT = new EstadoTipoRelacionInstitucionDomain();
 	private UUID idenficador;
 	private String nombre;
 	private String descripcion;
 
-	public EstadoTipoRelacionInstitucionDomain(UUID idenficador, String nombre, String descripcion) {
-	
+	private EstadoTipoRelacionInstitucionDomain() {
+		super();
+		setIdenficador(UtilUUID.DEFAULT_UUID);
+		setNombre(UtilText.getDefaultValue());
+		setDescripcion(UtilText.EMPTY);// Quitar el ""
+	}
+
+	public EstadoTipoRelacionInstitucionDomain
+	(final UUID idenficador,final String nombre,final String descripcion) {
+		super();
 		setIdenficador(idenficador);
 		setNombre(nombre);
 		setDescripcion(descripcion);
 
 	}
 
-	public EstadoTipoRelacionInstitucionDomain() {
-		
-		setIdenficador(UtilUUID.DEFAULT_UUID);
-		setNombre(UtilText.getDefaultValue());
-		setDescripcion(UtilText.EMPTY);// Quitar el ""
+	public static EstadoTipoRelacionInstitucionDomain getDefaultObject() {
+		return DEFAULT_OBJECT;
 	}
-	
+
+	public static EstadoTipoRelacionInstitucionDomain create(final UUID idenficador, final String nombre,
+			final String descripcion) {
+		return new EstadoTipoRelacionInstitucionDomain(idenficador, nombre, descripcion);
+	}
+
 	public static EstadoTipoRelacionInstitucionDomain crete() {
 		return new EstadoTipoRelacionInstitucionDomain();
 	}
@@ -47,7 +55,7 @@ public final class EstadoTipoRelacionInstitucionDomain {
 	}
 
 	public final EstadoTipoRelacionInstitucionDomain setNombre(final String nombre) {
-		
+
 		this.nombre = UtilText.getUtilText().applyTrim(nombre);
 		return this;
 	}
@@ -60,9 +68,5 @@ public final class EstadoTipoRelacionInstitucionDomain {
 		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
 		return this;
 	}
-
-	
-	
-	
 
 }

@@ -7,16 +7,34 @@ import co.edu.uco.publiuco.crosscutting.utils.UtilUUID;
 
 public final class EstadoTipoRelacionInstitucionEntity {
 
+	private static final EstadoTipoRelacionInstitucionEntity DEFAULT_OBJECT = new EstadoTipoRelacionInstitucionEntity();
 	private UUID idenficador;
 	private String nombre;
 	private String descripcion;
+	
+	private EstadoTipoRelacionInstitucionEntity() {
+		super();
+		setIdenficador(UtilUUID.DEFAULT_UUID);
+		setNombre(UtilText.getDefaultValue());
+		setDescripcion(UtilText.EMPTY);// Quitar el ""
+	}
 
-	public EstadoTipoRelacionInstitucionEntity(UUID idenficador, String nombre, String descripcion) {
-
+	public EstadoTipoRelacionInstitucionEntity
+	(final UUID idenficador,final String nombre,final String descripcion) {
+		super();
 		setIdenficador(idenficador);
 		setNombre(nombre);
 		setDescripcion(descripcion);
 
+	}
+	
+	public static EstadoTipoRelacionInstitucionEntity getDefaultObject() {
+		return DEFAULT_OBJECT;
+	}
+	
+	public static EstadoTipoRelacionInstitucionEntity create
+	(final UUID idenficador,final String nombre,final String descripcion) {
+		return new EstadoTipoRelacionInstitucionEntity(idenficador, nombre, descripcion);
 	}
 
 	public final UUID getIdenficador() {
