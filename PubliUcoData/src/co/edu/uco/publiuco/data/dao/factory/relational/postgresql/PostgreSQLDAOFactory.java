@@ -1,20 +1,29 @@
 package co.edu.uco.publiuco.data.dao.factory.relational.postgresql;
 
+import java.sql.Connection;
+
+import co.edu.uco.publiuco.crosscutting.utils.UtilSql;
 import co.edu.uco.publiuco.data.dao.EstadoTipoRelacionInstitucionDAO;
 import co.edu.uco.publiuco.data.dao.TipoRelacionInstitucionDAO;
 import co.edu.uco.publiuco.data.dao.factory.DAOFactory;
 
+
 public final class PostgreSQLDAOFactory  extends DAOFactory{
 
+	private Connection connection;
+	
+	 public PostgreSQLDAOFactory() {
+		abrirConexion();// TODO Auto-generated constructor stub
+	}
 	@Override
 	protected final void abrirConexion() {
-		// TODO Auto-generated method stub
+	connection = null;
 		
 	}
 
 	@Override
 	public final void cerrarConexion() {
-		// TODO Auto-generated method stub
+		UtilSql.closeConnection(connection);
 		
 	}
 

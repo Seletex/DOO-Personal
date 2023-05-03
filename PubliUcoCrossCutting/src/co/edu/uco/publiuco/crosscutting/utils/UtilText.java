@@ -1,5 +1,7 @@
 package co.edu.uco.publiuco.crosscutting.utils;
 
+
+
 public final class UtilText {
 
 	private static final UtilText INSTANCE = new UtilText();
@@ -27,10 +29,24 @@ public final class UtilText {
 		return resultString;
 	}
 
+	public final boolean isEmpty(final String text) {
+		return applyTrim(text).equals(EMPTY);
+	}
+
+	public final String getDefaultIfEmpty(final String text, final String defaultValue) {
+		/*
+		 * String resultString = TEXT; if(isEmpty(TEXT)) { resultString =
+		 * getDefault(defaultValue); }
+		 * 
+		 * return resultString;
+		 */
+		return isEmpty(text) ? getDefault(defaultValue) : text;
+	}
+
 	public final String getDefault(final String text) {
 		return getDefault(text, EMPTY);
 	}
-	
+
 	public static final String getDefaultValue() {
 		return EMPTY;
 	}
@@ -38,7 +54,7 @@ public final class UtilText {
 	public final String applyTrim(final String text) {
 		return getDefault(text).trim();
 	}
-	
+
 	public final boolean matchPattern(final String textString, final String patterString) {
 		return getDefault(textString).matches(getDefault(patterString));
 	}
