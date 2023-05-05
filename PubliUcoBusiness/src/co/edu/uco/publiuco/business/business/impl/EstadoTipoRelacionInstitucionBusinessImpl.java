@@ -32,7 +32,7 @@ public final class EstadoTipoRelacionInstitucionBusinessImpl implements EstadoTi
 				EstadoTipoRelacionInstitucionAssembler
 				.getInstance().toEntityFromDomain(domain);
 		final List<EstadoTipoRelacionInstitucionEntity> resultEntities = daoFactory.getEstadoTipoRelacionInstitucionDAO().read(entity);
-		return null;
+		return resultEntities.equals(entity);
 		
 	}
 
