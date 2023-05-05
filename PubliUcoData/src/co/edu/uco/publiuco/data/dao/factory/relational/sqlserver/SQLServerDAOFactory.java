@@ -28,13 +28,13 @@ public final class SQLServerDAOFactory extends DAOFactory{
 	}
 
 	@Override
-	public final void iniciarTransaccion() {
+	public final void initTransaction() {
 		//setAutoCommit = false
 		
 	}
 
 	@Override
-	public final void confirmarTransaccion() {
+	public final void commitTransaction() {
 		//Commit
 	}
 

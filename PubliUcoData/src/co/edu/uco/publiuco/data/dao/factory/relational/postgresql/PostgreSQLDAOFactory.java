@@ -28,13 +28,13 @@ public final class PostgreSQLDAOFactory  extends DAOFactory{
 	}
 
 	@Override
-	public final void iniciarTransaccion() {
+	public final void initTransaction() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public final void confirmarTransaccion() {
+	public final void commitTransaction() {
 		// TODO Auto-generated method stub
 		
 	}

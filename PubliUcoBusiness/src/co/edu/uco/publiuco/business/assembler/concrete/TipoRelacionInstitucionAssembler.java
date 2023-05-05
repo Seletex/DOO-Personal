@@ -1,5 +1,7 @@
 package co.edu.uco.publiuco.business.assembler.concrete;
 
+import java.util.List;
+
 import co.edu.uco.publiuco.business.assembler.Assembler;
 
 import co.edu.uco.publiuco.business.domain.TipoRelacionInstitucionDomain;
@@ -45,8 +47,15 @@ public class TipoRelacionInstitucionAssembler
 
 	@Override
 	public TipoRelacionInstitucionDomain toDomainFromEntity(TipoRelacionInstitucionEntity entity) {
-		// TODO Auto-generated method stub
+	
 		return new TipoRelacionInstitucionDomain(entity.getIdenficador(), entity.getNombre(), entity.getDescripcion(),
 				null);
+	}
+
+	@Override
+	public List<TipoRelacionInstitucionDomain> toDomainListFromEntityList(
+			List<TipoRelacionInstitucionEntity> entityList) {
+		
+		return null;
 	}
 }
