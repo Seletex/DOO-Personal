@@ -1,9 +1,8 @@
 package co.edu.uco.publiuco.business.assembler.concrete;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+
 
 import co.edu.uco.publiuco.business.assembler.Assembler;
 import co.edu.uco.publiuco.business.domain.EstadoTipoRelacionInstitucionDomain;
@@ -53,6 +52,12 @@ public class EstadoTipoRelacionInstitucionAssembler implements
 
 		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
 
+	}
+
+	@Override
+	public List<EstadoTipoRelacionInstitucionDTO> toDTOListFromDomainList(EstadoTipoRelacionInstitucionDomain domain) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -58,4 +58,10 @@ public class TipoRelacionInstitucionAssembler
 		
 		return null;
 	}
+
+	@Override
+	public List<TipoRelacionInstitucionDTO> toDTOListFromDomainList(TipoRelacionInstitucionDomain domain) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -52,9 +52,9 @@ public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipo
 	public List<EstadoTipoRelacionInstitucionDTO> list(EstadoTipoRelacionInstitucionDTO dto) {
 		try {
 			final var domain = EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainFromDTO(dto);
-			final var returnDomainList = business.list(domain);
+			final var DomainList = business.list(domain);
 			
-		return EstadoTipoRelacionInstitucionAssembler.getInstance().toDTOListFromDomainList(domainList);
+		return EstadoTipoRelacionInstitucionAssembler.getInstance().toDTOListFromDomainList(domain);
 		}catch(final PubliUcoException exception) {
 			daoFactory.cancelarTransaccion();
 			throw exception;
@@ -67,11 +67,7 @@ public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipo
 		}finally {
 			daoFactory.cerrarConexion();
 		}
-		
-		
-		return EstadoTipoRelacionInstitucionAssembler.getInstance().
-				toDomainListFromEntityList(resultEntities);
-		return ;
+	
 	}
 
 	@Override
