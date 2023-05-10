@@ -69,9 +69,8 @@ public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipo
 		}
 		
 		
-		return EstadoTipoRelacionInstitucionAssembler.getInstance().
-				toDomainListFromEntityList(resultEntities);
-		return ;
+	
+		return null;
 	}
 
 	@Override
