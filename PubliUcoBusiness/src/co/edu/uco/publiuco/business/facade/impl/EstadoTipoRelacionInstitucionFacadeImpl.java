@@ -54,6 +54,7 @@ public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipo
 			final var domain = EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainFromDTO(dto);
 			final var returnDomainList = business.list(domain);
 			
+		EstadoTipoRelacionInstitucionDomain domainList = null;
 		return EstadoTipoRelacionInstitucionAssembler.getInstance().toDTOListFromDomainList(domainList);
 		}catch(final PubliUcoException exception) {
 			daoFactory.cancelarTransaccion();
@@ -67,10 +68,6 @@ public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipo
 		}finally {
 			daoFactory.cerrarConexion();
 		}
-		
-		
-	
-		return null;
 	}
 
 	@Override
