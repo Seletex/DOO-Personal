@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+let frase ="El celo es morado";
+alert(frase.match(/x/g || []).length) ;
+
+
+      let eR= /^\d{3}[.]\d{3}[-][A-Za-z]{3}[.]d{3}[.]\d{2}[-][A-Za-z]{2}[.]$/;
+     let cadena =prompt("123.123-acd.44rr");
+     alert("ER"+eR.testcadena)
+     alert("serach"+cadena.search(eR));
+     alert("Match" + cadena.match(eR));
+     let text = "The rain in SPAIN stays mainly in the plain";
+alert(text.match("ain"));
+      // let texto = "Esta ";
+      // let texto2 = "Otra ";
+      //let nuevoTexto = texto.repeat(50);
+      // let arreglo = texto.split(" ", 3); en un vextor
+
+      // alert(texto.localeCompare(texto2));
+      // texto="Otra";
+      // texto2 = "Esta";
+      // alert(texto.localeCompare(texto2));
+      // texto = "Est";
+      // texto2 = "Esta";
+      // alert(texto.localeCompare(texto2));
+      // let numeroUno=123e000;
+      // alert(numeroUno)
+      // let numeroDos=123e-3;
+      // alert(numeroDos)
+      // let texto = "Mi casa";
+      // let texto2 = texto.includes("Mi");
+      // alert((texto2));
+      // texto2= texto.contains("Mi") ;     alert((texto.contains("Mi")));
+      // texto2 = texto.search("Mi");   alert((texto.search("Mi")));
+
+
+
+      let code ="[0-9]{3}[.][0-9]{3}[-][A-Z]{3}[.][0-9]{2}{A-Z}{2}"
+      let codemin = ""
+
+      function borrarEspacio(texto) {
+        return text.trim();
+      }
+      function colocarValor(boton) {
+        boton.disabled = true;
+        let cadena = window.prompt("Ingrese X o O").trim();
+
+        document.getElementById("primernombre").value = cadena
+          .trim()
+          .padStart(10, "-");
+        document.getElementById("segundonombre").value = cadena
+          .trimEnd()
+          .padStart(10, "-");
+        document.getElementById("primerapellido").value = cadena
+          .trimLeft()
+          .padStart(10, "-");
+        document.getElementById("segundoapellido").value = cadena
+          .trimStart()
+          .padStart(10, "-");
+        document.getElementById("numerotelefono").value = cadena
+          .trimRight()
+          .padStart(8, "-");
+
+        //  // alert("Trim  " + cadena.trim());
+        //   alert("TrimLeft  " + cadena.trimLeft());
+        //   alert("TrimRight  " + cadena.trimRight());
+        //   alert("TrimEnd  " + cadena.trimEnd());
+        //   alert("TrimStart  " + cadena.trimStart());
+
+        boton.textContent = cadena.trim();
+      }
+      // function leerNumero(
+      //   mensaje = "Ingrese numero deseado",
+      //   numeroDefecto = "0"
+      // ) {
+      //   let num;
+      //   do {
+      //     num = parseInt(prompt(mensaje, numeroDefecto));
+      //   } while (isNaN(num));
+      //   return num;
+      // }
+      // function sumar(n1 = 0, n2 = 0) {
+      //   return n1 + n2;
+      // }
+      // function deseaContinuar(mensaje = "Desea Continuar?") {
+      //   return confirm(mensaje);
+      // }
+      // do {
+      //   let n1 = leerNumero("Numero1", "0");
+      //   let n2 = leerNumero("Numero2", "0");
+      //   alert(sumar(n1 + n2));
+      // } while (deseaContinuar("Desea continuar?"));
+      // alert("Fin");
+
+      function colocarValue(boton) {
+        boton.disabled = true;
+        let cadena = prompt("Ingrese X o O").trim();
+      }
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>
+          <button type="button" id="11" onclick="colocarValue(this)">
+            &nbsp;
+          </button>
+        </th>
+        <th>
+          <button type="button" id="12" onclick="colocarValue(this)">
+            &nbsp;
+          </button>
+        </th>
+        <th>
+          <button type="button" id="13" onclick="colocarValue(this)">
+            &nbsp;
+          </button>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <button type="button" id="21" onclick="colocarValue(this)">
+            &nbsp;
+          </button>
+        </th>
+        <th>
+          <button type="button" id="22" onclick="colocarValue(this)">
+            &nbsp;
+          </button>
+        </th>
+        <th>
+          <button type="button" id="23" onclick="colocarValue(this)">
+            &nbsp;
+          </button>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <button type="button" id="31" onclick="colocarValue(this)">
+            &nbsp;
+          </button>
+        </th>
+        <th>
+          <button type="button" id="32" onclick="colocarValue(this)">
+            &nbsp;
+          </button>
+        </th>
+        <th>
+          <button type="button" id="33" onclick="colocarValue(this)">
+            &nbsp;
+          </button>
+        </th>
+      </tr>
+    </table>
+    <marquee direction="right"
+      ><h1>
+        (っ＾▿＾)۶🍸🌟🍺٩(˘◡˘ )<br />◥⊙▲⊙▲⊙▲⊙▲⊙◤<br />(👍≖‿‿≖)👍 👍(≖‿‿≖👍)
+      </h1></marquee
+    >
+    <form action="/action_page.php">
+      <fieldset>
+        <legend>Persona y Contacto:</legend>
+
+        <table border="1">
+          <tr>
+            <td><label for="fname">Primer Nombre:</label></td>
+            <td><input type="text" /></td>
+            <td><label for="fname">Segundo Nombre:</label></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td><label for="fname">Primer Apellido:</label></td>
+            <td><input type="text" /></td>
+            <td><label for="fname">Segundo Apellido:</label></td>
+            <td><input type="text" /></td>
+          </tr>
+          <tr>
+            <td><label for="email"> Numero Telefono:</label></td>
+            <td><input type="tel" /></td>
+            <td><label for="correo">Correo Electronico:</label></td>
+            <td><input type="email" /></td>
+          </tr>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>Identificacion y Residencia:</legend>
+        <table border="1">
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+        <label for="start">Fecha Nacimiento:</label>
+        <input type="date" id="start" name="trip-start" />
+        <label for="fname">Tipo Identificacion:</label>
+        <select id="TI" name="TI">
+          <option value="nu">Nupi</option>
+          <option value="rc">Registro Civil</option>
+          <option value="ti">Targeta Identidad</option>
+          <option value="ce">Cedula</option>
+          <option value="pa">Pasaporte</option>
+          <option value="ce">Cedula Extrangera</option>
+        </select>
+        <label for="lname">Identificacion:</label>
+        <input type="text" id="lname" name="lname" /><br /><br />
+        <label for="fname">Pais Redidencia:</label>
+        <select id="cars" name="cars">
+          <option value="col">Colombia</option>
+          <option value="saab">Targeta Identidad</option>
+          <option value="fiat">Cedula</option>
+          <option value="audi">Pasaporte</option>
+          <option value="audi">Cedula Extrangera</option>
+        </select>
+        <label for="fname">Departamento Redidencia:</label>
+        <select id="cars">
+          <option value="" selected="selected">Seleccione un valor...</option>
+          <option value="volvo">Antioquia</option>
+          <option value="saab">Boyaca</option>
+          <option value="fiat">Cedula</option>
+          <option value="audi">Pasaporte</option>
+          <option value="audi">Cedula Extrangera</option>
+        </select>
+        <label for="fname">Ciudad Redidencia:</label>
+        <select id="cars" name="cars">
+          <option value="volvo">Registro Civil</option>
+          <option value="saab">Targeta Identidad</option>
+          <option value="fiat">Cedula</option>
+          <option value="audi">Pasaporte</option>
+          <option value="audi">Cedula Extrangera</option></select
+        ><br /><br />
+      </fieldset>
+      <fieldset>
+        <legend>Profesional:</legend>
+        <label for="fname">Gusto Musical:</label><br />
+        <input type="checkbox" />
+        <label for="vehicle1">Jazz</label>
+        <input type="checkbox" />
+        <label for="vehicle1">Blues</label>
+        <input type="checkbox" />
+        <label for="vehicle1">Góspel</label>
+        <input type="checkbox" />
+        <label for="vehicle1">Soul</label>
+        <input type="checkbox" />
+        <label for="vehicle1">Pop</label>
+        <input type="checkbox" />
+        <label for="vehicle1">Rock </label><br /><br />
+        <label for="fname">RH:</label>
+        <select id="cars" name="cars">
+          <option value="volvo">A</option>
+          <option value="saab">B</option>
+          <option value="fiat">AB</option>
+          <option value="audi">O</option>
+        </select>
+        <select id="cars" name="cars">
+          <option value="volvo">+</option>
+          <option value="saab">-</option></select
+        ><br /><br />
+        <label for="fname">Perfil:</label><br />
+        <textarea name="message" rows="10" cols="60"></textarea><br /><br />
+      </fieldset>
+      <fieldset>
+        <legend>Fin:</legend>
+        <input type="submit" value="Enviar" />
+        <input type="reset" value="Borrar" />
+      </fieldset>
+    </form>
+  </body>
+</html>
