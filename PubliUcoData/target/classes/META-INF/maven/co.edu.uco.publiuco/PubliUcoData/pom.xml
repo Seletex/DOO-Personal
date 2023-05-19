@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>co.edu.uco.publiuco</groupId>
-  <artifactId>PubliUcoDTO</artifactId>
+  <artifactId>PubliUcoData</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>PubliUcoDTO</name>
-  <description>Componente que contienetodos losobjetosde transferencia dedatos para llevar acabo la informacion desde la capa de datos de API/Servicios/Comando/Controler</description>
+  <name>PubliUcoData</name>
+  <description>Componenteque contiene  la logica de negocio de la aplicacion</description>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -21,6 +21,11 @@
 	  <dependency>
 		 	 <groupId>co.edu.uco.publiuco</groupId>
   			<artifactId>PubliUcoCrossCutting</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+	  </dependency>
+	  <dependency>
+		 	 <groupId>co.edu.uco.publiuco</groupId>
+  			<artifactId>PublicUcoEntities</artifactId>
   			<version>0.0.1-SNAPSHOT</version>
 	  </dependency>
   </dependencies>

@@ -60,11 +60,19 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 		try (var preparedStatement =  getConnection().prepareStatement(sqlStatement.toString())){
 			
 		}catch (SQLException exception) {
-			// TODO: handle exception
+			var userMessage = "Se ha presentado un problema tratando de consultar la informacion del nuevo estado ETRI. Vuelva a intentarlo porfavor. Si el poblema se presenta continuamente contacte al administrador ";
+
+			var technicalMessage = "Se ha presentado un problema de tipo SQL EXCEPTIONdentro del metodo de la clase list de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
+
+			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
 		}catch (Exception exception) {
-			// TODO: handle exception
+			var userMessage = "Se ha presentado un problema inesperado tratando de consultar la informacion del nuevo estado ETRI, si el problema se presenta de nuevo porfavor contacte al administrador ";
+
+			var technicalMessage = "Se ha presentado un problema inesperado de tipo SQL EXCEPTION dentro del metodo de la clase list de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
+
+			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
 		}
-		return null;
+		return null);
 	}
 
 	@Override
