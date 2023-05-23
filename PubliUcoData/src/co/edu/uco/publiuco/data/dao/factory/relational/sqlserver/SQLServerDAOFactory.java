@@ -23,7 +23,7 @@ public final class SQLServerDAOFactory extends DAOFactory{
 
 	@Override
 	public final void cerrarConexion() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -40,7 +40,7 @@ public final class SQLServerDAOFactory extends DAOFactory{
 
 	@Override
 	public void cancelarTransaccion() {
-		//Rollback
+		
 		
 	}
 
@@ -51,7 +51,7 @@ public final class SQLServerDAOFactory extends DAOFactory{
 
 	@Override
 	public TipoRelacionInstitucionDAO geTipoRelacionInstitucionDAO() {
-		// TODO Auto-generated method stub
+		
 		return new TipoRelacionInstitucionSQLServerDAO(connection);
 	}
 

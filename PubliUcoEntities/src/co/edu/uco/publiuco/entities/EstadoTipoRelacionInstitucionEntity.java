@@ -13,14 +13,14 @@ public final class EstadoTipoRelacionInstitucionEntity {
 	private String descripcion;
 
 	private EstadoTipoRelacionInstitucionEntity() {
-		super();
+		
 		setIdenficador(UtilUUID.DEFAULT_UUID);
 		setNombre(UtilText.getDefaultValue());
 		setDescripcion(UtilText.EMPTY);// Quitar el ""
 	}
 
 	public EstadoTipoRelacionInstitucionEntity(final UUID idenficador, final String nombre, final String descripcion) {
-		super();
+		
 		setIdenficador(idenficador);
 		setNombre(nombre);
 		setDescripcion(descripcion);

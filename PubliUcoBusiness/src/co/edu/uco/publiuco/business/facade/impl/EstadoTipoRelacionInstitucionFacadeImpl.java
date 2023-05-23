@@ -13,39 +13,38 @@ import co.edu.uco.publiuco.crosscutting.utils.Messages.EstadoTipoRelacionInstitu
 import co.edu.uco.publiuco.data.dao.factory.DAOFactory;
 import co.edu.uco.publiuco.data.dao.factory.Factory;
 import co.edu.uco.publiuco.dto.EstadoTipoRelacionInstitucionDTO;
-import co.edu.uco.publiuco.entities.EstadoTipoRelacionInstitucionEntity;
 
-public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipoRelacionInstitucionFacade{
+public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipoRelacionInstitucionFacade {
 
 	private final DAOFactory daoFactory;
 	private final EstadoTipoRelacionInstitucionBusiness business;
-	
+
 	public EstadoTipoRelacionInstitucionFacadeImpl() {
 		daoFactory = DAOFactory.getFactory(Factory.POSTGRESQL);
 		business = new EstadoTipoRelacionInstitucionBusinessImpl(daoFactory);
 	}
-	
+
 	@Override
 	public void register(EstadoTipoRelacionInstitucionDTO dto) {
 		try {
 			daoFactory.initTransaction();
-			EstadoTipoRelacionInstitucionDomain domain=EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainFromDTO(dto);
-		
+			EstadoTipoRelacionInstitucionDomain domain = EstadoTipoRelacionInstitucionAssembler.getInstance()
+					.toDomainFromDTO(dto);
+
 			business.register(domain);
 			daoFactory.commitTransaction();
-		}catch(final PubliUcoException exception) {
+		} catch (final PubliUcoException exception) {
 			daoFactory.cancelarTransaccion();
 			throw exception;
-		}catch(final Exception exception) {
+		} catch (final Exception exception) {
 			daoFactory.cancelarTransaccion();
-			
-			var userMessage=EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_USER_MESSAGE_STRING;
-			var technicalMessage=EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_TECHNICAL_MESSAGE_STRING;
-			throw PubliUcoBusinessException.create(technicalMessage, userMessage,exception);
-		}finally {
+
+
+			throw PubliUcoBusinessException.create(EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_TECHNICAL_MESSAGE_STRING,  EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_USER_MESSAGE_STRING, exception);
+		} finally {
 			daoFactory.cerrarConexion();
 		}
-		
+
 	}
 
 	@Override
@@ -53,19 +52,19 @@ public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipo
 		try {
 			final var domain = EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainFromDTO(dto);
 			final var returnDomainList = business.list(domain);
-			
-		EstadoTipoRelacionInstitucionDomain domainList = null;
-		return EstadoTipoRelacionInstitucionAssembler.getInstance().toDTOListFromDomainList(domainList);
-		}catch(final PubliUcoException exception) {
+
+			List<EstadoTipoRelacionInstitucionDomain> domainList = null;
+			return EstadoTipoRelacionInstitucionAssembler.getInstance().toDTOListFromDomainList(domainList);
+		} catch (final PubliUcoException exception) {
 			daoFactory.cancelarTransaccion();
 			throw exception;
-		}catch(final Exception exception) {
+		} catch (final Exception exception) {
 			daoFactory.cancelarTransaccion();
-			
-			var userMessage=EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_USER_MESSAGE_STRING;
-			var technicalMessage=EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_TECHNICAL_MESSAGE_STRING;
-			throw PubliUcoBusinessException.create(technicalMessage, userMessage,exception);
-		}finally {
+
+			throw PubliUcoBusinessException.create(
+					EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_TECHNICAL_MESSAGE_STRING,
+					EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_USER_MESSAGE_STRING, exception);
+		} finally {
 			daoFactory.cerrarConexion();
 		}
 	}
@@ -74,46 +73,48 @@ public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipo
 	public void modify(EstadoTipoRelacionInstitucionDTO dto) {
 		try {
 			daoFactory.initTransaction();
-			EstadoTipoRelacionInstitucionDomain domain=EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainFromDTO(dto);
-		
+			final EstadoTipoRelacionInstitucionDomain domain = EstadoTipoRelacionInstitucionAssembler.getInstance()
+					.toDomainFromDTO(dto);
+
 			business.modify(domain);
 			daoFactory.commitTransaction();
-		}catch(final PubliUcoException exception) {
+		} catch (final PubliUcoException exception) {
 			daoFactory.cancelarTransaccion();
 			throw exception;
-		}catch(final Exception exception) {
+		} catch (final Exception exception) {
 			daoFactory.cancelarTransaccion();
-			
-			var userMessage=EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_USER_MESSAGE_STRING;
-			var technicalMessage=EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_TECHNICAL_MESSAGE_STRING;
-			throw PubliUcoBusinessException.create(technicalMessage, userMessage,exception);
-		}finally {
+
+
+			throw PubliUcoBusinessException.create(EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_TECHNICAL_MESSAGE_STRING, EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_USER_MESSAGE_STRING, exception);
+		} finally {
 			daoFactory.cerrarConexion();
 		}
-		
+
 	}
 
 	@Override
 	public void drop(EstadoTipoRelacionInstitucionDTO dto) {
 		try {
 			daoFactory.initTransaction();
-			EstadoTipoRelacionInstitucionDomain domain=EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainFromDTO(dto);
-		
+			final EstadoTipoRelacionInstitucionDomain domain = EstadoTipoRelacionInstitucionAssembler.getInstance()
+					.toDomainFromDTO(dto);
+
 			business.drop(domain);
 			daoFactory.commitTransaction();
-		}catch(final PubliUcoException exception) {
+		} catch (final PubliUcoException exception) {
 			daoFactory.cancelarTransaccion();
 			throw exception;
-		}catch(final Exception exception) {
+		} catch (final Exception exception) {
 			daoFactory.cancelarTransaccion();
-			
-			var userMessage=EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_USER_MESSAGE_STRING;
-			var technicalMessage=EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_TECHNICAL_MESSAGE_STRING;
-			throw PubliUcoBusinessException.create(technicalMessage, userMessage,exception);
-		}finally {
+
+		
+			throw PubliUcoBusinessException.create(
+					EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_TECHNICAL_MESSAGE_STRING,
+					EstadoTipoRelacionInstitucionFacadeImplMessage.REGISTER_EXCEPTION_USER_MESSAGE_STRING, exception);
+		} finally {
 			daoFactory.cerrarConexion();
 		}
-		
+
 	}
 
 }

@@ -1,6 +1,6 @@
 package co.edu.uco.publiuco.data.dao.relational.sqlserver;
 
-import java.awt.datatransfer.StringSelection;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import co.edu.uco.publiuco.crosscutting.exception.PubliUcoDataException;
 import co.edu.uco.publiuco.crosscutting.exception.PubliUcoException;
+import co.edu.uco.publiuco.crosscutting.utils.Messages.EstadoTipoRelacionInstitucionSQLServerDAOMEssage;
 import co.edu.uco.publiuco.crosscutting.utils.UtilObject;
 import co.edu.uco.publiuco.crosscutting.utils.UtilText;
 import co.edu.uco.publiuco.crosscutting.utils.UtilUUID;
@@ -26,7 +27,7 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 
 	@Override
 	public final void create(final EstadoTipoRelacionInstitucionEntity entity) {
-		var sqlStatement = "INSERT INTO EstadoTipoRelacionInstitucion (identificacion, nombre, descripcion)";
+		final var sqlStatement = "INSERT INTO EstadoTipoRelacionInstitucion (identificacion, nombre, descripcion)";
 		try (var preparedStatement = getConnection().prepareStatement(sqlStatement)) {
 			preparedStatement.setObject(1, entity.getIdenficador());
 			preparedStatement.setObject(2, entity.getNombre());
@@ -34,18 +35,12 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 
 			preparedStatement.executeUpdate();
 		} catch (final SQLException exception) {
-			var userMessage = "Se ha presentado un problema tratando de registra la informacion del nuevo estado ETRI ";
-
-			var technicalMessage = "Se ha presentado un problema de tipo SQL EXCEPTIONdentro del metodo de la clase create de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
-
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+			
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_PROBLEM_CREATE_SQLEXCEPTION,EstadoTipoRelacionInstitucionSQLServerDAOMEssage.USER_PROBLEM_CREATE_SQLEXCEPTION, exception);
 
 		} catch (final Exception exception) {
-			var userMessage = "Se ha presentado un problema inesperado tratando de registra la informacion del nuevo estado ETRI ";
-
-			var technicalMessage = "Se ha presentado un problema inesperado de tipo SQL EXCEPTIONdentro del metodo de la clase create de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
-
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+			
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_SQLEXCEPTION, EstadoTipoRelacionInstitucionSQLServerDAOMEssage.USER_UNEXPECTED_PROBLEM_UPDATE_SQLEXCEPTION, exception);
 
 		}
 
@@ -53,8 +48,8 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 
 	@Override
 	public final List<EstadoTipoRelacionInstitucionEntity> read(final EstadoTipoRelacionInstitucionEntity entity) {
-		var sqlStatement = new StringBuilder();
-		var parameters = new ArrayList<>();
+		final var sqlStatement = new StringBuilder();
+		final var parameters = new ArrayList<>();
 		sqlStatement.append(prepareSelec());
 		sqlStatement.append(prepareFrom());
 		sqlStatement.append(prepareWhere(entity, parameters));
@@ -67,18 +62,13 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 			
 			throw exception;
 		} catch (final SQLException exception) {
-			var userMessage = "Se ha presentado un problema tratando de dar de consultar la informacion de los estados tipo relacion institucion... ";
 
-			var technicalMessage = "Se ha presentado un problema de tipo SQL EXCEPTION dentro del metodo de la clase read de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
 
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_PROBLEM_READ_SQLEXCEPTION, EstadoTipoRelacionInstitucionSQLServerDAOMEssage.USER_PROBLEM_READ_SQLEXCEPTION, exception);
 
 		} catch (final Exception exception) {
-			var userMessage = "Se ha presentado un problema inesperado tratando de dar de consutar la informacion del nuevo estado ETRI ";
-
-			var technicalMessage = "Se ha presentado un problema inesperado de tipo setParameters dentro del metodo de la clase delete de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
-
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+	
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_UNEXPECTED_PROBLEM_READ_SQLEXCEPTION, EstadoTipoRelacionInstitucionSQLServerDAOMEssage.USER_UNEXPECTED_PROBLEM_READ_SQLEXCEPTION, exception);
 
 		}
 		
@@ -86,7 +76,7 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 
 	@Override
 	public final void update(final EstadoTipoRelacionInstitucionEntity entity) {
-		var sqlStatement = "UPDATE EstadoTipoRelacionInstitucion SET nombre = ?,descripcion = ? WHERE Identificador = ?";
+		final var sqlStatement = "UPDATE EstadoTipoRelacionInstitucion SET nombre = ?,descripcion = ? WHERE Identificador = ?";
 		try (var preparedStatement = getConnection().prepareStatement(sqlStatement)) {
 
 			preparedStatement.setObject(2, entity.getNombre());
@@ -94,25 +84,20 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 
 			preparedStatement.executeUpdate();
 		} catch (final SQLException exception) {
-			var userMessage = "Se ha presentado un problema tratando de modificar la informacion del nuevo estado ETRI ";
-
-			var technicalMessage = "Se ha presentado un problema de tipo SQL EXCEPTIONdentro del metodo de la clase update de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
-
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+		
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_PROBLEM_UPDATE_SQLEXCEPTION, EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_PROBLEM_UPDATE_SQLEXCEPTION, exception);
 
 		} catch (final Exception exception) {
-			var userMessage = "Se ha presentado un problema inesperado tratando de registra la informacion del nuevo estado ETRI ";
 
-			var technicalMessage = "Se ha presentado un problema inesperado de tipo SQL EXCEPTIONdentro del metodo de la clase create de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
 
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_UNEXPECTED_PROBLEM_UPDATE_SQLEXCEPTION, EstadoTipoRelacionInstitucionSQLServerDAOMEssage.USER_UNEXPECTED_PROBLEM_UPDATE_SQLEXCEPTION, exception);
 		}
 
 	}
 
 	@Override
 	public final void delete(final EstadoTipoRelacionInstitucionEntity entity) {
-		var sqlStatement = "DELETE FROM EstadoTipoRelacionInstitucion WHERE Identificador = ?";
+		final var sqlStatement = "DELETE FROM EstadoTipoRelacionInstitucion WHERE Identificador = ?";
 		try (var preparedStatement = getConnection().prepareStatement(sqlStatement)) {
 
 			preparedStatement.setObject(1, entity.getIdenficador());
@@ -120,18 +105,12 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 			preparedStatement.executeUpdate();
 		} catch (final SQLException exception) {
 
-			var userMessage = "Se ha presentado un problema tratando de dar de baja la informacion del nuevo estado ETRI ";
-
-			var technicalMessage = "Se ha presentado un problema de tipo SQL EXCEPTIONdentro del metodo de la clase delete de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
-
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+		
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_PROBLEM_DELETE_SQLEXCEPTION, EstadoTipoRelacionInstitucionSQLServerDAOMEssage.USER_PROBLEM_DELETE_SQLEXCEPTION, exception);
 
 		} catch (final Exception exception) {
-			var userMessage = "Se ha presentado un problema inesperado tratando de dar de baja la informacion del nuevo estado ETRI ";
 
-			var technicalMessage = "Se ha presentado un problema inesperado de tipo SQL EXCEPTIONdentro del metodo de la clase delete de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
-
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_UNEXPECTED_PROBLEM_DELETE_SQLEXCEPTION, EstadoTipoRelacionInstitucionSQLServerDAOMEssage.USER_UNEXPECTED_PROBLEM_DELETE_SQLEXCEPTION, exception);
 
 		}
 	}
@@ -188,18 +167,12 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 				}
 			}
 		} catch (final SQLException exception) {
-			var userMessage = "Se ha presentado un problema tratando de dar de consultar la informacion de los estados tipo relacion institucion... ";
-
-			var technicalMessage = "Se ha presentado un problema de tipo SQL EXCEPTIONdentro del metodo de la clase setParameters de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
-
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+			
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_PROBLEM_READ_SETWHERE_SQLEXCEPTION, EstadoTipoRelacionInstitucionSQLServerDAOMEssage.USER_PROBLEM_READ_SETWHERE_SQLEXCEPTION, exception);
 
 		} catch (final Exception exception) {
-			var userMessage = "Se ha presentado un problema inesperado tratando de dar de consutar la informacion del nuevo estado ETRI ";
-
-			var technicalMessage = "Se ha presentado un problema inesperado de tipo setParameters dentro del metodo de la clase delete de ETRI SQL server DAO. Porfavor verifica la traza completa del error";
-
-			throw PubliUcoDataException.create(technicalMessage, userMessage, exception);
+			
+			throw PubliUcoDataException.create(EstadoTipoRelacionInstitucionSQLServerDAOMEssage.TECHNICAL_PROBLEM_READ_SETWHERE_SQLEXCEPTION, EstadoTipoRelacionInstitucionSQLServerDAOMEssage.USER_UNEXPECTED_PROBLEM_READ_SETWHERE_SQLEXCEPTION, exception);
 
 		}
 
@@ -210,7 +183,7 @@ public final class EstadoTipoRelacionInstitucionSQLServerDAO extends SQLDAO<Esta
 		final List<EstadoTipoRelacionInstitucionEntity> resultEntities = new ArrayList<>();
 		try (var resultSet = preparedStatement.executeQuery()) {
 			while (resultSet.next()) {
-				var entityTmp = new EstadoTipoRelacionInstitucionEntity(
+			final 	var entityTmp = new EstadoTipoRelacionInstitucionEntity(
 						resultSet.getObject("identificador", UUID.class), resultSet.getString("nombre"),
 						resultSet.getString("descripcion"));
 				resultEntities.add(entityTmp);

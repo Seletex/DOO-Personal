@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uco.publiuco.dto.EstadoTipoRelacionInstitucionDTO;
@@ -26,7 +27,7 @@ public final class EstadoTipoRelacionInstitucionController {
 	}
 
 	@GetMapping
-	public List<EstadoTipoRelacionInstitucionDTO> list(@RequestParam EstadoTipoRelacionInstitucionDTO dto) {
+	public List<EstadoTipoRelacionInstitucionDTO> list(@RequestBody EstadoTipoRelacionInstitucionDTO dto) {
 		List<EstadoTipoRelacionInstitucionDTO> list = new ArrayList<>();
 		list.add(EstadoTipoRelacionInstitucionDTO.crete());
 		list.add(EstadoTipoRelacionInstitucionDTO.crete());
@@ -43,12 +44,12 @@ public final class EstadoTipoRelacionInstitucionController {
 	}
 	
 	@PostMapping
-	public EstadoTipoRelacionInstitucionDTO create(@RequestParam EstadoTipoRelacionInstitucionDTO dto) {
+	public EstadoTipoRelacionInstitucionDTO create(@RequestBody EstadoTipoRelacionInstitucionDTO dto) {
 		return dto;
 	}
 	
 	@PutMapping("/{id}")
-	public EstadoTipoRelacionInstitucionDTO update(@PathVariable UUID id,@RequestParam EstadoTipoRelacionInstitucionDTO dto) {
+	public EstadoTipoRelacionInstitucionDTO update(@PathVariable UUID id,@RequestBody EstadoTipoRelacionInstitucionDTO dto) {
 		return dto.setIdenficador(id);
 	}
 	

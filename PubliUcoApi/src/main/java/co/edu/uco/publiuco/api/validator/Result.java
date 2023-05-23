@@ -3,8 +3,6 @@ package co.edu.uco.publiuco.api.validator;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.message.Message;
-
 import co.edu.uco.publiuco.crosscutting.utils.UtilObject;
 import co.edu.uco.publiuco.crosscutting.utils.UtilText;
 

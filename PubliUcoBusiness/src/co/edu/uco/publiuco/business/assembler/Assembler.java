@@ -6,6 +6,8 @@ import java.util.List;
 
 
 
+
+
 public interface Assembler<D, T, E> {
 
 	T toDTOFromDomain(D domain);
@@ -18,6 +20,8 @@ public interface Assembler<D, T, E> {
 	
 	List<D>toDomainListFromEntityList(List<E> entityList);
 
-	List<T> toDTOListFromDomainList(D domain);
+	
+
+	List<T> toDTOListFromDomainList(List<D> domainList);
 
 }

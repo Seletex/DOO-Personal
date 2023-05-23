@@ -10,7 +10,7 @@ import co.edu.uco.publiuco.crosscutting.utils.Messages.UtilSqlMessage;
 public final class UtilSql {
 
 	private UtilSql() {
-		super();
+	
 	}
 
 	public static final boolean connectionIsNull(final Connection connection) {
@@ -61,9 +61,8 @@ public final class UtilSql {
 		try {
 			if (connectionIsOpen(connection)) {
 
-				var userMessage = UtilSqlMessage.CONNECTION_IS_OPEN_USER_MESSAGE_STRING;
-				var technicalMessage = UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_NULL_CONNECTION_STRING;
-				throw PubliUcoCrossCuttingException.create(technicalMessage, userMessage);
+			
+				throw PubliUcoCrossCuttingException.create( UtilSqlMessage.TECHNICAL_PROBLEM_TO_INIT_TRANSACTION_CONNECTION,  UtilSqlMessage.TECHNICAL_TRY_INIT_TRANSACTION);
 			}
 
 			connection.setAutoCommit(false);
@@ -71,14 +70,12 @@ public final class UtilSql {
 
 			throw exception;
 		} catch (final Exception exception) {
-			var userMessage = UtilSqlMessage.CONNECTION_IS_OPEN_USER_MESSAGE_STRING;
-			var technicalMessage = UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION_STRING;
-			;
-			throw PubliUcoCrossCuttingException.create(technicalMessage, userMessage, exception);
+			
+			
+			throw PubliUcoCrossCuttingException.create( UtilSqlMessage.TECHNICAL_PROBLEM_TO_INIT_TRANSACTION_CONNECTION,  UtilSqlMessage.TECHNICAL_TRY_INIT_TRANSACTION, exception);
 		}
 
-		// .createTechnicalException(Messages.SqlConnectionHelper.TECHNICAL_TRY_INIT_TRANSACTION,
-		// exception);
+	
 
 	}
 
@@ -86,10 +83,9 @@ public final class UtilSql {
 
 		try {
 			if (connectionIsOpen(connection)) {
-				var userMessage = UtilSqlMessage.CONNECTION_IS_OPEN_USER_MESSAGE_STRING;
-				var technicalMessage = UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_NULL_CONNECTION_STRING;
-				throw PubliUcoCrossCuttingException.create(technicalMessage, userMessage);
-				// Messages.UtilSqlMessage.TECHNICAL_CONNECTION_IS_CLOSED_FOR_COMMIT_TRANSACTION);
+				
+				throw PubliUcoCrossCuttingException.create(UtilSqlMessage.TECHNICAL_CONNECTION_IS_CLOSED_FOR_COMMIT_TRANSACTION, UtilSqlMessage.TECHNICAL_TRY_COMMIT_TRANSACTION);
+				
 			}
 			connection.setAutoCommit(false);
 		} catch (PubliUcoCrossCuttingException exception) {
@@ -97,10 +93,9 @@ public final class UtilSql {
 		}
 
 		catch (final SQLException exception) {
-			var userMessage = UtilSqlMessage.CONNECTION_IS_OPEN_USER_MESSAGE_STRING;
-			var technicalMessage = UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_NULL_CONNECTION_STRING;
-			throw PubliUcoCrossCuttingException.create(technicalMessage, userMessage);
-			// .createTechnicalException(Messages.UtilSqlMessage.TECHNICAL_TRY_INIT_TRANSACTION);
+			
+			throw PubliUcoCrossCuttingException.create(UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_NULL_CONNECTION_STRING, UtilSqlMessage.CONNECTION_IS_OPEN_USER_MESSAGE_STRING);
+		
 		}
 
 	}
@@ -108,18 +103,18 @@ public final class UtilSql {
 	public static final void rollBackTransaction(final Connection connection) throws SQLException {
 		try {
 			if (!connectionIsOpen(connection)) {
-				var userMessage = UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION_STRING;
-				var technicalMessage = UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_NULL_CONNECTION_STRING;
+	
 
-				throw PubliUcoCrossCuttingException.create(technicalMessage, userMessage);
+				throw PubliUcoCrossCuttingException.create(UtilSqlMessage.TECHNICAL_CONNECTION_IS_CLOSED_FOR_ROLLBACK_TRANSACTION, UtilSqlMessage.TECHNICAL_TRY_ROLLBACK_TRANSACTION);
 			}
 
 			if (connection.getAutoCommit()) {
-				var userMessage = UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION_STRING;
-				var technicalMessage = UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_NULL_CONNECTION_STRING;
+				
+				throw PubliUcoCrossCuttingException.create(UtilSqlMessage.TECHNICAL_CONNECTION_IS_CLOSED_FOR_ROLLBACK_TRANSACTION,UtilSqlMessage.CONNECTION_IS_OPEN_TECHNICAL_EXCEPTION_STRING);
+			
 			}
 		} finally {
-
+			connection.rollback();
 		}
 	}
 }

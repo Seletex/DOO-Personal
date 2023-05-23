@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import co.edu.uco.publiuco.crosscutting.utils.UtilText;
 import co.edu.uco.publiuco.crosscutting.utils.UtilUUID;
-import co.edu.uco.publiuco.entities.EstadoTipoRelacionInstitucionEntity;
+
 
 public final class EstadoTipoRelacionInstitucionDomain {
 	private static final EstadoTipoRelacionInstitucionDomain DEFAULT_OBJECT = new EstadoTipoRelacionInstitucionDomain();

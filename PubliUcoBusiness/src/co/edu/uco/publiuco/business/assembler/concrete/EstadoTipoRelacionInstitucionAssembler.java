@@ -50,14 +50,16 @@ public class EstadoTipoRelacionInstitucionAssembler implements
 	public final List<EstadoTipoRelacionInstitucionDomain> toDomainListFromEntityList(
 			final List<EstadoTipoRelacionInstitucionEntity> entityList) {
 
-		return entityList.stream().map(entity -> toDomainFromEntity(entity)).toList();
+		return entityList.stream().map(this::toDomainFromEntity).toList();
 
 	}
 
 	@Override
-	public List<EstadoTipoRelacionInstitucionDTO> toDTOListFromDomainList(EstadoTipoRelacionInstitucionDomain domain) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<EstadoTipoRelacionInstitucionDTO> toDTOListFromDomainList(final List<EstadoTipoRelacionInstitucionDomain> domainList) {
+		return domainList.stream().map(this::toDTOFromDomain).toList();
+	
 	}
+
+	
 
 }

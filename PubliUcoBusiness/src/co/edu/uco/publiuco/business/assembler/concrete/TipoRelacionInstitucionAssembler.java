@@ -49,19 +49,21 @@ public class TipoRelacionInstitucionAssembler
 	public TipoRelacionInstitucionDomain toDomainFromEntity(TipoRelacionInstitucionEntity entity) {
 	
 		return new TipoRelacionInstitucionDomain(entity.getIdenficador(), entity.getNombre(), entity.getDescripcion(),
-				null);
+			null);
 	}
 
 	@Override
 	public List<TipoRelacionInstitucionDomain> toDomainListFromEntityList(
 			List<TipoRelacionInstitucionEntity> entityList) {
 		
-		return null;
+		return entityList.stream().map(this::toDomainFromEntity).toList();
 	}
 
+
+
 	@Override
-	public List<TipoRelacionInstitucionDTO> toDTOListFromDomainList(TipoRelacionInstitucionDomain domain) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TipoRelacionInstitucionDTO> toDTOListFromDomainList(List<TipoRelacionInstitucionDomain> domainList) {
+		return domainList.stream().map(this::toDTOFromDomain).toList();
+		
 	}
 }

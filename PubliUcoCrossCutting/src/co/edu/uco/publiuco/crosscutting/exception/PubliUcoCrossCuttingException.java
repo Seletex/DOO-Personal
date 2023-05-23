@@ -25,8 +25,8 @@ public class PubliUcoCrossCuttingException extends PubliUcoException {
 	}
 
 	public static Exception createTechnicalException(String technicalTryInitTransaction) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return new PubliUcoCrossCuttingException(technicalTryInitTransaction, technicalTryInitTransaction, new Exception());
 	}
 
 }

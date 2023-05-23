@@ -13,7 +13,7 @@ public final class PostgreSQLDAOFactory  extends DAOFactory{
 	private Connection connection;
 	
 	 public PostgreSQLDAOFactory() {
-		abrirConexion();// TODO Auto-generated constructor stub
+		abrirConexion();
 	}
 	@Override
 	protected final void abrirConexion() {
@@ -29,31 +29,30 @@ public final class PostgreSQLDAOFactory  extends DAOFactory{
 
 	@Override
 	public final void initTransaction() {
-		// TODO Auto-generated method stub
+	
 		
 	}
 
 	@Override
 	public final void commitTransaction() {
-		// TODO Auto-generated method stub
-		
-	}
+
+ }
 
 	@Override
 	public final void cancelarTransaccion() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public final EstadoTipoRelacionInstitucionDAO getEstadoTipoRelacionInstitucionDAO() {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 
 	@Override
 	public final TipoRelacionInstitucionDAO geTipoRelacionInstitucionDAO() {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 
