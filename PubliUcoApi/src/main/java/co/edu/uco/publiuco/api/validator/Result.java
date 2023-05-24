@@ -44,5 +44,7 @@ public final class Result {
 	public void addMessages(final List<String> messages) {
 		getMessages().addAll(UtilObject.getDefault(messages, new ArrayList<>()));
 	}
+	
+	
 
 }
