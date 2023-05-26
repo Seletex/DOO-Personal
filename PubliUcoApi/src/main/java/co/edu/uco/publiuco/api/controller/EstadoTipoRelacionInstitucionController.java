@@ -1,5 +1,6 @@
 package co.edu.uco.publiuco.api.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +23,7 @@ import org.slf4j.Logger;
 import co.edu.uco.publiuco.api.validator.estadotiporelacioninstitucion.RegistrarEstadoTipoRelacionInstitucionValidation;
 import co.edu.uco.publiuco.business.facade.EstadoTipoRelacionInstitucionFacade;
 import co.edu.uco.publiuco.business.facade.impl.EstadoTipoRelacionInstitucionFacadeImpl;
+import co.edu.uco.publiuco.crosscutting.exception.PubliUcoApiException;
 import co.edu.uco.publiuco.crosscutting.exception.PubliUcoException;
 import co.edu.uco.publiuco.dto.EstadoTipoRelacionInstitucionDTO;
 
@@ -29,11 +31,9 @@ import co.edu.uco.publiuco.dto.EstadoTipoRelacionInstitucionDTO;
 @RequestMapping("publiuco/api/v1/estadotiporelacioninstitucion")
 public final class EstadoTipoRelacionInstitucionController {
 
-	private Logger log = LoggerFactory.getLogger(EstadoTipoRelacionInstitucionController.class);
+	private final Logger log = LoggerFactory.getLogger(EstadoTipoRelacionInstitucionController.class);
 
 	private EstadoTipoRelacionInstitucionFacade facade;
-
-
 
 	@GetMapping("/dummy")
 
@@ -42,41 +42,50 @@ public final class EstadoTipoRelacionInstitucionController {
 	}
 
 	@GetMapping
-	public ResponseEntity<Response<EstadoTipoRelacionInstitucionDTO>>  list(@RequestBody EstadoTipoRelacionInstitucionDTO dto) {
-		List<EstadoTipoRelacionInstitucionDTO> list = new ArrayList<>();
+	public ResponseEntity<Response<EstadoTipoRelacionInstitucionDTO>> list(
+			@RequestBody EstadoTipoRelacionInstitucionDTO dto) {
+		final List<EstadoTipoRelacionInstitucionDTO> list = new ArrayList<>();
 		list.add(EstadoTipoRelacionInstitucionDTO.crete());
 		list.add(EstadoTipoRelacionInstitucionDTO.crete());
 		list.add(EstadoTipoRelacionInstitucionDTO.crete());
 		list.add(EstadoTipoRelacionInstitucionDTO.crete());
-		
-		List<String> messages = new ArrayList<>();
+
+		final List<String> messages = new ArrayList<>();
 		messages.add("Estado de tipo relacion institucion consultados existosamente");
-		Response<EstadoTipoRelacionInstitucionDTO> response = new Response<>(list,messages);
-		return new ResponseEntity<>(response,HttpStatus.OK);
+		final Response<EstadoTipoRelacionInstitucionDTO> response = new Response<>(list, messages);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Response<EstadoTipoRelacionInstitucionDTO>> listById(@RequestBody EstadoTipoRelacionInstitucionDTO dto) {
 		var statusCode = HttpStatus.OK;
-		var response = new Response<EstadoTipoRelacionInstitucionDTO>();
+		final var response = new Response<EstadoTipoRelacionInstitucionDTO>();
 		
 		try {
-			var result = RegistrarEstadoTipoRelacionInstitucionValidation.validate(dto);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+			//final var result = RegistrarEstadoTipoRelacionInstitucionValidation.validate(dto);
+			throw PubliUcoApiException.create("Se ha consultado con exito");
+			
+			}catch (final PubliUcoException exception) {
+			statusCode = HttpStatus.BAD_REQUEST;
+			response.getMessageStrings().add(exception.getUserMessage());
+			log.error(exception.getType().toString().concat("-").concat(exception.getTechnicalMessage()));
 
-		return new ResponseEntity<>(response,HttpStatus.OK);
+		} catch (final Exception exception) {
+			statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+			response.getMessageStrings().add("Se ha presentado un problema inesperado.Porfavor intentar de nuevo");
+			log.error("Se ha presntado un problem inesperado. Porfavor validar la consola");
+		}
+		return new ResponseEntity<>(response,statusCode);
 	}
 
 	@PostMapping
 	public ResponseEntity<Response<EstadoTipoRelacionInstitucionDTO>> create(
 			@RequestBody EstadoTipoRelacionInstitucionDTO dto) {
 		var statusCode = HttpStatus.OK;
-		var response = new Response<EstadoTipoRelacionInstitucionDTO>();
+		final var response = new Response<EstadoTipoRelacionInstitucionDTO>();
 
 		try {
-			var result = RegistrarEstadoTipoRelacionInstitucionValidation.validate(dto);
+			final	var result = RegistrarEstadoTipoRelacionInstitucionValidation.validate(dto);
 			if (result.getMessages().isEmpty()) {
 				facade = new EstadoTipoRelacionInstitucionFacadeImpl();
 				facade.register(dto);

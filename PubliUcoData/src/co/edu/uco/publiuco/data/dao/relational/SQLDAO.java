@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.util.List;
 
 import co.edu.uco.publiuco.crosscutting.exception.PubliUcoDataException;
+import co.edu.uco.publiuco.crosscutting.utils.Messages.SQLDAOMessage;
 import co.edu.uco.publiuco.crosscutting.utils.UtilSql;
 
 
@@ -15,11 +16,9 @@ public abstract class SQLDAO<E> {
 		return connection;
 	}
 
-	private void setConnection(Connection connection) {
+	protected final void setConnection(final Connection connection) {
 		if(!UtilSql.connectionIsOpen(connection)) {
-			var userMessage = "Se ha presentado un problema tratando de llevar a cabo la operación sobre el Estado del Tipo Relacion Institucion. Porfavor intentelo de nuevo y si el problema persiste contacte al administrador ";
-		var technicalMessage = "No se ha podido crear el EstadoTipoRelacionInstitucionSQLServerDAO , debido a la mconexion no esta abierta ";
-		throw PubliUcoDataException.create(technicalMessage, userMessage); 
+		throw PubliUcoDataException.create(SQLDAOMessage.TECHNICAL_PROBLEM_SQL_DAO_PROBLEM_STRING, SQLDAOMessage.USER_PROBLEM_SQL_DAO_PROBLEM_STRING); 
 		}
 		this.connection = connection;
 	}

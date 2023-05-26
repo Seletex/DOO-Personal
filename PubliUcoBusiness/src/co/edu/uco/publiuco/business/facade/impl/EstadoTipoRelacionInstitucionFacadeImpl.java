@@ -28,7 +28,7 @@ public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipo
 	public void register(EstadoTipoRelacionInstitucionDTO dto) {
 		try {
 			daoFactory.initTransaction();
-			EstadoTipoRelacionInstitucionDomain domain = EstadoTipoRelacionInstitucionAssembler.getInstance()
+			final EstadoTipoRelacionInstitucionDomain domain = EstadoTipoRelacionInstitucionAssembler.getInstance()
 					.toDomainFromDTO(dto);
 
 			business.register(domain);
@@ -50,10 +50,10 @@ public final class EstadoTipoRelacionInstitucionFacadeImpl implements EstadoTipo
 	@Override
 	public List<EstadoTipoRelacionInstitucionDTO> list(EstadoTipoRelacionInstitucionDTO dto) {
 		try {
-			final var domain = EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainFromDTO(dto);
-			final var returnDomainList = business.list(domain);
+		//	final var domain = EstadoTipoRelacionInstitucionAssembler.getInstance().toDomainFromDTO(dto);
+			//final var returnDomainList = business.list(domain);
 
-			List<EstadoTipoRelacionInstitucionDomain> domainList = null;
+			final List<EstadoTipoRelacionInstitucionDomain> domainList = null;
 			return EstadoTipoRelacionInstitucionAssembler.getInstance().toDTOListFromDomainList(domainList);
 		} catch (final PubliUcoException exception) {
 			daoFactory.cancelarTransaccion();
