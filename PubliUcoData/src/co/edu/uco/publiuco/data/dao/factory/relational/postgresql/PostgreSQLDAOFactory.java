@@ -1,6 +1,7 @@
 package co.edu.uco.publiuco.data.dao.factory.relational.postgresql;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import co.edu.uco.publiuco.crosscutting.utils.UtilSql;
 import co.edu.uco.publiuco.data.dao.EstadoTipoRelacionInstitucionDAO;
@@ -15,34 +16,41 @@ public final class PostgreSQLDAOFactory  extends DAOFactory{
 	 public PostgreSQLDAOFactory() {
 		abrirConexion();
 	}
-	@Override
-	protected final void abrirConexion() {
-	connection = null;
-		
-	}
+	 @Override
+		protected final void abrirConexion() {
+		UtilSql.connectionIsOpen(connection);
+		}
 
-	@Override
-	public final void cerrarConexion() {
-		UtilSql.closeConnection(connection);
-		
-	}
+		@Override
+		public final void cerrarConexion() {
+			
+			UtilSql.closeConnection(connection);
+		}
 
-	@Override
-	public final void initTransaction() {
-	
-		
-	}
+		@Override
+		public final void initTransaction() {
+			try {
+				UtilSql.initTransaction(connection);
+			} catch (SQLException exception) {
+				
+			}
+			
+		}
 
-	@Override
-	public final void commitTransaction() {
+		@Override
+		public final void commitTransaction() {
+			UtilSql.commitTransaction(connection);
+		}
 
- }
-
-	@Override
-	public final void cancelarTransaccion() {
-		
-		
-	}
+		@Override
+		public void cancelarTransaccion() {
+			try {
+				UtilSql.rollBackTransaction(connection);
+			} catch (SQLException e) {
+				
+			}
+			
+		}
 
 	@Override
 	public final EstadoTipoRelacionInstitucionDAO getEstadoTipoRelacionInstitucionDAO() {

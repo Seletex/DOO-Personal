@@ -15,7 +15,7 @@ import co.edu.uco.publiuco.entities.EstadoTipoRelacionInstitucionEntity;
 
 public final class EstadoTipoRelacionInstitucionBusinessImpl implements EstadoTipoRelacionInstitucionBusiness {
 
-	private DAOFactory daoFactory;
+	private final DAOFactory daoFactory;
 
 	public EstadoTipoRelacionInstitucionBusinessImpl(final DAOFactory daoFactory) {
 		this.daoFactory = daoFactory;

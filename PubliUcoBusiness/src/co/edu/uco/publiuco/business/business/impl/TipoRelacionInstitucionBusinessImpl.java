@@ -13,7 +13,7 @@ import co.edu.uco.publiuco.entities.TipoRelacionInstitucionEntity;
 
 public class TipoRelacionInstitucionBusinessImpl implements TipoRelacionInstitucionBusiness {
 
-	private DAOFactory daoFactory;
+	private final  DAOFactory daoFactory;
 
 	public TipoRelacionInstitucionBusinessImpl(final DAOFactory daoFactory) {
 		this.daoFactory = daoFactory;

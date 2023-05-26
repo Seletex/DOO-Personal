@@ -1,7 +1,9 @@
 package co.edu.uco.publiuco.data.dao.factory.relational.sqlserver;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
+import co.edu.uco.publiuco.crosscutting.utils.UtilSql;
 import co.edu.uco.publiuco.data.dao.EstadoTipoRelacionInstitucionDAO;
 import co.edu.uco.publiuco.data.dao.TipoRelacionInstitucionDAO;
 import co.edu.uco.publiuco.data.dao.factory.DAOFactory;
@@ -18,29 +20,37 @@ public final class SQLServerDAOFactory extends DAOFactory{
 	
 	@Override
 	protected final void abrirConexion() {
-		connection = null;
+	UtilSql.connectionIsOpen(connection);
 	}
 
 	@Override
 	public final void cerrarConexion() {
 		
-		
+		UtilSql.closeConnection(connection);
 	}
 
 	@Override
 	public final void initTransaction() {
-		//setAutoCommit = false
+		try {
+			UtilSql.initTransaction(connection);
+		} catch (SQLException exception) {
+			
+		}
 		
 	}
 
 	@Override
 	public final void commitTransaction() {
-		//Commit
+		UtilSql.commitTransaction(connection);
 	}
 
 	@Override
 	public void cancelarTransaccion() {
-		
+		try {
+			UtilSql.rollBackTransaction(connection);
+		} catch (SQLException e) {
+			
+		}
 		
 	}
 
