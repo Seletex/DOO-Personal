@@ -36,7 +36,8 @@ public class TipoRelacionInstitucionAssembler
 
 	@Override
 	public TipoRelacionInstitucionDomain toDomainFromDTO(TipoRelacionInstitucionDTO dto) {
-		return new TipoRelacionInstitucionDomain(dto.getIdenficador(), dto.getNombre(), dto.getDescripcion(), null);
+		return new TipoRelacionInstitucionDomain(dto.getIdenficador(), dto.getNombre(),
+				dto.getDescripcion(), null);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public class TipoRelacionInstitucionDomain {
 	public TipoRelacionInstitucionDomain
 	(final UUID idenficador,final String nombre,
 			final String descripcion, final
-			TipoRelacionInstitucionDomain estado) {
+			EstadoTipoRelacionInstitucionDomain estado) {
 
 		setIdenficador(idenficador);
 		setNombre(nombre);
@@ -30,7 +30,7 @@ public class TipoRelacionInstitucionDomain {
 
 	public static TipoRelacionInstitucionDomain create(final UUID idenficador,final String nombre,
 			final String descripcion,
-			TipoRelacionInstitucionDomain estado) {
+			EstadoTipoRelacionInstitucionDomain estado) {
 		return new TipoRelacionInstitucionDomain(idenficador, nombre, descripcion, estado);
 	}
 
@@ -66,7 +66,7 @@ public class TipoRelacionInstitucionDomain {
 		return estado;
 	}
 
-	private void setEstado(TipoRelacionInstitucionDomain estado2) {
+	private void setEstado(EstadoTipoRelacionInstitucionDomain estado2) {
 		this.estado = (EstadoTipoRelacionInstitucionDomain) UtilObject.getDefault(estado2,
 				EstadoTipoRelacionInstitucionDomain.getDefaultObject()
 				);

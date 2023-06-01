@@ -30,6 +30,10 @@ public final class EstadoTipoRelacionInstitucionDTO {
 		return new EstadoTipoRelacionInstitucionDTO();
 	}
 
+	public static EstadoTipoRelacionInstitucionDTO crete(UUID idenficador, String nombre, String descripcion) {
+		return new EstadoTipoRelacionInstitucionDTO();
+	}
+	
 	public final UUID getIdenficador() {
 		return idenficador;
 	}
