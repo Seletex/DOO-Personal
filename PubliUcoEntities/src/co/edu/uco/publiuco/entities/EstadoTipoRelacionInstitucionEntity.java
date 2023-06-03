@@ -13,29 +13,31 @@ public final class EstadoTipoRelacionInstitucionEntity {
 	private String descripcion;
 
 	private EstadoTipoRelacionInstitucionEntity() {
-		
+
 		setIdenficador(UtilUUID.DEFAULT_UUID);
 		setNombre(UtilText.getDefaultValue());
 		setDescripcion(UtilText.EMPTY);// Quitar el ""
 	}
 
 	public EstadoTipoRelacionInstitucionEntity(final UUID idenficador, final String nombre, final String descripcion) {
-		
+
 		setIdenficador(idenficador);
 		setNombre(nombre);
 		setDescripcion(descripcion);
 
 	}
 
-	public static final  EstadoTipoRelacionInstitucionEntity createWithIdentificador(final UUID idenficador) {
-		return new EstadoTipoRelacionInstitucionEntity(idenficador, UtilText.getDefaultValue(),UtilText.EMPTY);
-		
+	public static final EstadoTipoRelacionInstitucionEntity createWithIdentificador(final UUID idenficador) {
+		return new EstadoTipoRelacionInstitucionEntity(idenficador, UtilText.getDefaultValue(), UtilText.EMPTY);
+
 	}
-		public static final  EstadoTipoRelacionInstitucionEntity createWithNombrer(final String nombre) {
-			return new EstadoTipoRelacionInstitucionEntity(UtilUUID.DEFAULT_UUID,nombre,UtilText.EMPTY);
-		}
-			public static final  EstadoTipoRelacionInstitucionEntity createWithDescripcion(final String descripcion) {
-				return new EstadoTipoRelacionInstitucionEntity(UtilUUID.DEFAULT_UUID, UtilText.EMPTY,descripcion);
+
+	public static final EstadoTipoRelacionInstitucionEntity createWithNombrer(final String nombre) {
+		return new EstadoTipoRelacionInstitucionEntity(UtilUUID.DEFAULT_UUID, nombre, UtilText.EMPTY);
+	}
+
+	public static final EstadoTipoRelacionInstitucionEntity createWithDescripcion(final String descripcion) {
+		return new EstadoTipoRelacionInstitucionEntity(UtilUUID.DEFAULT_UUID, UtilText.EMPTY, descripcion);
 	}
 
 	public static EstadoTipoRelacionInstitucionEntity getDefaultObject() {

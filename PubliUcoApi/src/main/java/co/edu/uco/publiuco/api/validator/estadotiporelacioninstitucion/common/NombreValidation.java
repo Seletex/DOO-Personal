@@ -19,7 +19,7 @@ public class NombreValidation implements Validation<String> {
 	public Result execute(String data) {
 		var result = Result.create();
 
-		if (true) {// validar longitud de la cadena
+		if (data.length()<10) {// validar longitud de la cadena
 			result.addMessage("No es posible tener el nombre por defecto del estado tipo relacion institucion");
 		}
 		if (true) {// validar solo puede contener letras y es pacios
